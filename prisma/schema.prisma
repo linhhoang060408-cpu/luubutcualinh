@@ -1,0 +1,56 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String       @id @default(uuid())
+  name         String
+  email        String       @unique
+  avatar       String?
+  createdAt    DateTime     @default(now())
+  memoryBooks  MemoryBook[]
+}
+
+model MemoryBook {
+  id          String    @id @default(uuid())
+  ownerId     String
+  owner       User      @relation(fields: [ownerId], references: [id])
+  title       String
+  description String?
+  slug        String    @unique
+  coverImage  String?
+  theme       String    @default("pink")
+  createdAt   DateTime  @default(now())
+  messages    Message[]
+}
+
+model Message {
+  id           String    @id @default(uuid())
+  memoryBookId String
+  memoryBook   MemoryBook @relation(fields: [memoryBookId], references: [id])
+  senderName   String
+  senderClass  String?
+  email        String?
+  facebook     String?
+  instagram    String?
+  message      String
+  memorableQ   String?
+  futureWishQ  String?
+  reaction     String?
+  anonymous    Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  images       Image[]
+}
+
+model Image {
+  id        String   @id @default(uuid())
+  messageId String
+  message   Message  @relation(fields: [messageId], references: [id], onDelete: Cascade)
+  url       String
+  createdAt DateTime @default(now())
+}

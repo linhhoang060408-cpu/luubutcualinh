@@ -1,0 +1,68 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: linear-gradient(135deg, #ffe5ec 0%, #f0f4ff 100%);
+  color: #4a3b42;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+}
+
+/* Form Container */
+.form-container {
+  max-width: 650px;
+  margin: 40px auto;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 10px 30px rgba(244, 143, 177, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Các ô Input và Textarea */
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid #fce4ec;
+  background: rgba(255, 255, 255, 0.9);
+  transition: all 0.3s ease;
+  color: #4a3b42;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #f48fb1;
+  box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.2);
+  background: #fff;
+}
+
+/* Hàng chia đôi (Họ tên / Lớp) */
+.form-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+/* Nút bấm */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(90deg, #f48fb1, #ffb1c1);
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(244, 143, 177, 0.4);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(244, 143, 177, 0.6);
+}
